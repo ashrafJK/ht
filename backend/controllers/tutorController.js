@@ -221,3 +221,21 @@ export const toggleTutorStatus = asyncHandler(async (req, res) => {
 
   res.json(tObj);
 });
+
+// @desc    Delete Tutor permanently (Admin)
+// @route   DELETE /api/tutors/:id
+// @access  Private/Admin
+export const deleteTutor = asyncHandler(async (req, res) => {
+  const tutor = await Tutor.findById(req.params.id);
+
+  if (tutor) {
+    if (tutor.userId) {
+      await User.findByIdAndDelete(tutor.userId);
+    }
+    await tutor.deleteOne();
+    res.json({ message: 'Tutor profile and user account deleted permanently' });
+  } else {
+    res.status(404);
+    throw new Error('Tutor not found');
+  }
+});

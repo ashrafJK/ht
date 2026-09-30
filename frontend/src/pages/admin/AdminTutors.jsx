@@ -10,6 +10,7 @@ import {
   FaEye,
   FaUser,
   FaStar,
+  FaTrash,
 } from 'react-icons/fa';
 
 const AdminTutors = () => {
@@ -60,6 +61,19 @@ const AdminTutors = () => {
       setTutors(tutors.map((t) => (t._id === id ? data : t)));
     } catch (err) {
       toast.error('Failed to update account status');
+    }
+  };
+
+  const handleDeleteTutor = async (tutorId) => {
+    if (!window.confirm('Are you sure you want to permanently delete this tutor profile and account?')) {
+      return;
+    }
+    try {
+      await API.delete(`/tutors/${tutorId}`);
+      toast.success('Tutor profile deleted permanently');
+      setTutors(tutors.filter((t) => t._id !== tutorId));
+    } catch (err) {
+      toast.error('Failed to delete tutor profile');
     }
   };
 
@@ -214,6 +228,13 @@ const AdminTutors = () => {
                             title={isSuspended ? 'Activate Tutor' : 'Suspend Tutor'}
                           >
                             {isSuspended ? 'Activate' : 'Suspend'}
+                          </button>
+                          <button
+                            onClick={() => handleDeleteTutor(tutor._id)}
+                            className="p-2 text-slate-500 hover:text-rose-600 rounded-lg hover:bg-rose-50 text-xs"
+                            title="Delete Tutor Permanently"
+                          >
+                            <FaTrash />
                           </button>
                         </div>
                       </td>
