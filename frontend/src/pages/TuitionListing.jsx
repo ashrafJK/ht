@@ -113,7 +113,7 @@ const TuitionListing = () => {
           <FaSearch className="absolute left-3 top-3 text-slate-400 text-xs" />
           <input
             type="text"
-            placeholder="HT-1025, Physics, Dhanmondi..."
+            placeholder="EMT-1025, Physics, Dhanmondi..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full pl-9 pr-3 py-2 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500"

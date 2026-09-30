@@ -1,13 +1,13 @@
 import asyncHandler from 'express-async-handler';
 import Tuition from '../models/Tuition.js';
 
-// Helper to generate next Tuition ID (HT-1001, HT-1002, ...)
+// Helper to generate next Tuition ID (EMT-1001, EMT-1002, ...)
 export const generateTuitionId = async () => {
-  const tuitions = await Tuition.find({ tuitionId: /^HT-\d+$/ }, { tuitionId: 1 }).lean();
+  const tuitions = await Tuition.find({ tuitionId: /^(EMT|HT)-\d+$/i }, { tuitionId: 1 }).lean();
   let maxNum = 1000;
   for (const t of tuitions) {
     if (t.tuitionId) {
-      const match = t.tuitionId.match(/HT-(\d+)/);
+      const match = t.tuitionId.match(/(?:EMT|HT)-(\d+)/i);
       if (match && match[1]) {
         const num = parseInt(match[1], 10);
         if (num > maxNum) {
@@ -18,11 +18,11 @@ export const generateTuitionId = async () => {
   }
 
   let candidateNum = maxNum + 1;
-  let candidateId = `HT-${candidateNum}`;
+  let candidateId = `EMT-${candidateNum}`;
 
   while (await Tuition.exists({ tuitionId: candidateId })) {
     candidateNum++;
-    candidateId = `HT-${candidateNum}`;
+    candidateId = `EMT-${candidateNum}`;
   }
 
   return candidateId;
