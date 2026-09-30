@@ -37,7 +37,7 @@ const AdminSidebar = ({ mobileOpen, setMobileOpen }) => {
             </div>
             <div>
               <span className="text-lg font-bold text-white tracking-tight block">
-                HT-BD <span className="text-amber-400">Admin</span>
+                EMT <span className="text-amber-400">Admin</span>
               </span>
               <span className="text-[10px] uppercase font-bold text-slate-400">Control Panel</span>
             </div>
