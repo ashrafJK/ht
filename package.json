@@ -1,0 +1,13 @@
+{
+  "name": "home-tutor-bd",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Home Tutor BD - MERN Stack Home Tuition Management Platform",
+  "scripts": {
+    "backend": "cd backend && npm run dev",
+    "frontend": "cd frontend && npm run dev",
+    "seed": "cd backend && npm run seed",
+    "seed:admin": "cd backend && npm run seed:admin",
+    "build": "cd frontend && npm run build"
+  }
+}
