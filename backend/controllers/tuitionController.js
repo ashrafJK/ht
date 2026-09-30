@@ -3,16 +3,29 @@ import Tuition from '../models/Tuition.js';
 
 // Helper to generate next Tuition ID (HT-1001, HT-1002, ...)
 export const generateTuitionId = async () => {
-  const lastTuition = await Tuition.findOne({}, {}, { sort: { createdAt: -1 } });
-  if (!lastTuition || !lastTuition.tuitionId) {
-    return 'HT-1001';
+  const tuitions = await Tuition.find({ tuitionId: /^HT-\d+$/ }, { tuitionId: 1 }).lean();
+  let maxNum = 1000;
+  for (const t of tuitions) {
+    if (t.tuitionId) {
+      const match = t.tuitionId.match(/HT-(\d+)/);
+      if (match && match[1]) {
+        const num = parseInt(match[1], 10);
+        if (num > maxNum) {
+          maxNum = num;
+        }
+      }
+    }
   }
-  const match = lastTuition.tuitionId.match(/HT-(\d+)/);
-  if (match && match[1]) {
-    const nextNum = parseInt(match[1], 10) + 1;
-    return `HT-${nextNum}`;
+
+  let candidateNum = maxNum + 1;
+  let candidateId = `HT-${candidateNum}`;
+
+  while (await Tuition.exists({ tuitionId: candidateId })) {
+    candidateNum++;
+    candidateId = `HT-${candidateNum}`;
   }
-  return `HT-${Date.now().toString().slice(-4)}`;
+
+  return candidateId;
 };
 
 // @desc    Get all tuition posts (Filtered & Searched)
@@ -153,9 +166,7 @@ export const createTuition = asyncHandler(async (req, res) => {
   } = req.body;
 
   let tuitionId = customTuitionId;
-  if (!tuitionId) {
-    tuitionId = await generateTuitionId();
-  } else {
+  if (tuitionId) {
     const existing = await Tuition.findOne({ tuitionId });
     if (existing) {
       res.status(400);
@@ -163,26 +174,41 @@ export const createTuition = asyncHandler(async (req, res) => {
     }
   }
 
-  const tuition = await Tuition.create({
-    tuitionId,
-    title,
-    className,
-    subject,
-    studentGender: studentGender || 'Any',
-    numberOfStudents: numberOfStudents || 1,
-    location,
-    area: area || '',
-    daysPerWeek: daysPerWeek || '3 Days/Week',
-    preferredTime: preferredTime || '7:00 PM',
-    salary: Number(salary),
-    tutorGenderPreference: tutorGenderPreference || 'Any',
-    tuitionType: tuitionType || 'Home Tuition',
-    description: description || '',
-    requirements: requirements || '',
-    applicationDeadline: applicationDeadline || null,
-    featured: featured || false,
-    status: status || 'active',
-  });
+  let tuition;
+  let attempts = 0;
+  while (!tuition && attempts < 5) {
+    try {
+      if (!customTuitionId || attempts > 0) {
+        tuitionId = await generateTuitionId();
+      }
+      tuition = await Tuition.create({
+        tuitionId,
+        title,
+        className,
+        subject,
+        studentGender: studentGender || 'Any',
+        numberOfStudents: numberOfStudents || 1,
+        location,
+        area: area || '',
+        daysPerWeek: daysPerWeek || '3 Days/Week',
+        preferredTime: preferredTime || '7:00 PM',
+        salary: Number(salary),
+        tutorGenderPreference: tutorGenderPreference || 'Any',
+        tuitionType: tuitionType || 'Home Tuition',
+        description: description || '',
+        requirements: requirements || '',
+        applicationDeadline: applicationDeadline || null,
+        featured: featured || false,
+        status: status || 'active',
+      });
+    } catch (err) {
+      if (err.code === 11000 && !customTuitionId) {
+        attempts++;
+        continue;
+      }
+      throw err;
+    }
+  }
 
   res.status(201).json(tuition);
 });
