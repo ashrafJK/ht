@@ -126,7 +126,7 @@ const Home = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight max-w-4xl mx-auto leading-tight sm:leading-none"
           >
-            Find the Right Home Tutor for Your Learning
+            Find the Right English Medium Tutor for Your Learning
           </motion.h1>
 
           <motion.p
@@ -135,7 +135,7 @@ const Home = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="mt-6 text-base sm:text-xl text-slate-300 max-w-2xl mx-auto font-normal leading-relaxed"
           >
-            Discover verified home tuition opportunities and connect with the right students and tutors across Bangladesh.
+            Discover verified english medium tuition opportunities and connect with the right students and tutors across Bangladesh.
           </motion.p>
 
           <motion.div
