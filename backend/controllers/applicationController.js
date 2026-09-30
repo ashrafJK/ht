@@ -145,3 +145,18 @@ export const updateApplicationStatus = asyncHandler(async (req, res) => {
 
   res.json(populated);
 });
+
+// @desc    Delete application permanently (Admin)
+// @route   DELETE /api/applications/:id
+// @access  Private/Admin
+export const deleteApplication = asyncHandler(async (req, res) => {
+  const application = await Application.findById(req.params.id);
+
+  if (application) {
+    await application.deleteOne();
+    res.json({ message: 'Application deleted permanently' });
+  } else {
+    res.status(404);
+    throw new Error('Application not found');
+  }
+});

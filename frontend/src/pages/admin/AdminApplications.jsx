@@ -11,6 +11,7 @@ import {
   FaFileAlt,
   FaPhone,
   FaEnvelope,
+  FaTrash,
 } from 'react-icons/fa';
 
 const AdminApplications = () => {
@@ -53,6 +54,19 @@ const AdminApplications = () => {
       );
     } catch (err) {
       toast.error('Failed to update application status');
+    }
+  };
+
+  const handleDeleteApplication = async (appId) => {
+    if (!window.confirm('Are you sure you want to permanently delete this application?')) {
+      return;
+    }
+    try {
+      await API.delete(`/applications/${appId}`);
+      toast.success('Application deleted permanently');
+      setApplications(applications.filter((app) => app._id !== appId));
+    } catch (err) {
+      toast.error('Failed to delete application');
     }
   };
 
@@ -199,6 +213,14 @@ const AdminApplications = () => {
                               <FaTimes /> Reject
                             </button>
                           )}
+
+                          <button
+                            onClick={() => handleDeleteApplication(app._id)}
+                            className="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-rose-900 text-white font-bold text-xs flex items-center gap-1 shadow-xs"
+                            title="Delete Application Permanently"
+                          >
+                            <FaTrash /> Delete
+                          </button>
                         </div>
                       </td>
                     </tr>

@@ -4,6 +4,7 @@ import {
   getMyApplications,
   getAllApplications,
   updateApplicationStatus,
+  deleteApplication,
 } from '../controllers/applicationController.js';
 import { protect, adminOnly, tutorOnly } from '../middleware/authMiddleware.js';
 
@@ -15,6 +16,9 @@ router
   .get(protect, adminOnly, getAllApplications);
 
 router.get('/my', protect, tutorOnly, getMyApplications);
+router
+  .route('/:id')
+  .delete(protect, adminOnly, deleteApplication);
 router.patch('/:id/status', protect, adminOnly, updateApplicationStatus);
 
 export default router;
