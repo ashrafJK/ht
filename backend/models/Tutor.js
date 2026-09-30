@@ -84,6 +84,7 @@ const tutorSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
+    bufferCommands: false,
   }
 );
 

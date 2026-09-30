@@ -27,9 +27,17 @@ app.use(express.json());
 
 // Ensure DB connection middleware for serverless environment
 app.use(async (req, res, next) => {
-  await connectDB();
-  next();
+  try {
+    await connectDB();
+    next();
+  } catch (err) {
+    res.status(500).json({
+      message: `Database Connection Failed: ${err.message}`,
+      error: err.message,
+    });
+  }
 });
+
 
 // Helper to ensure Admin user exists in DB
 export const ensureAdminUser = async () => {

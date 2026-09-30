@@ -1,5 +1,14 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import dns from 'dns';
+
+// Fix Windows DNS SRV lookup if needed
+if (!process.env.VERCEL) {
+  try {
+    dns.setServers(['8.8.8.8', '1.1.1.1']);
+  } catch (e) {}
+}
+
 import User from './models/User.js';
 import Tutor from './models/Tutor.js';
 import Tuition from './models/Tuition.js';
@@ -291,7 +300,7 @@ const seedData = async () => {
       },
     ]);
 
-    console.log('Database seeded successfully!');
+    console.log('Database seeded successfully into MongoDB Atlas!');
     process.exit(0);
   } catch (error) {
     console.error(`Error during seed: ${error.message}`);
