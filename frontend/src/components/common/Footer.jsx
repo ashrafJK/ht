@@ -90,7 +90,7 @@ const Footer = () => {
             <ul className="space-y-3 text-sm text-slate-400">
               <li className="flex items-center gap-2.5">
                 <FaMapMarkerAlt className="text-primary-400 shrink-0" />
-                <span>Level 5, House 12, Road 4, Dhanmondi, Dhaka 1205</span>
+                <span>Dhaka, Bangladesh</span>
               </li>
               <li className="flex items-center gap-2.5">
                 <FaPhoneAlt className="text-emerald-400 shrink-0" />
@@ -98,7 +98,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-2.5">
                 <FaEnvelope className="text-amber-400 shrink-0" />
-                <span>info@hometutorbd.com</span>
+                <span>englishmediumtutor33@gmail.com</span>
               </li>
             </ul>
           </div>

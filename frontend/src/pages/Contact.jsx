@@ -25,7 +25,7 @@ const Contact = () => {
     e.preventDefault();
     setSubmitting(true);
     setTimeout(() => {
-      toast.success('Thank you! Your message has been sent to Home Tutor BD team.');
+      toast.success('Thank you! Your message has been sent to English Medium Tutor team.');
       setFormData({ name: '', email: '', phone: '', message: '' });
       setSubmitting(false);
     }, 800);
@@ -50,7 +50,7 @@ const Contact = () => {
             <ul className="space-y-5 text-slate-300 text-sm">
               <li className="flex items-start gap-3">
                 <FaMapMarkerAlt className="text-primary-400 text-lg shrink-0 mt-0.5" />
-                <span>Level 5, House 12, Road 4, Dhanmondi, Dhaka 1205, Bangladesh</span>
+                <span>Dhaka, Bangladesh</span>
               </li>
               <li className="flex items-center gap-3">
                 <FaPhoneAlt className="text-emerald-400 text-lg shrink-0" />
@@ -58,7 +58,7 @@ const Contact = () => {
               </li>
               <li className="flex items-center gap-3">
                 <FaEnvelope className="text-amber-400 text-lg shrink-0" />
-                <span>info@hometutorbd.com</span>
+                <span>englishmediumtutor33@gmail.com</span>
               </li>
             </ul>
           </div>
