@@ -37,7 +37,7 @@ const AdminLogin = () => {
             <FaUserShield />
           </div>
           <h1 className="text-2xl font-bold tracking-tight">Admin Portal Login</h1>
-          <p className="text-slate-400 text-xs">Home Tutor BD Administrative Access</p>
+          <p className="text-slate-400 text-xs">English Medium Tutor Administrative Access</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">

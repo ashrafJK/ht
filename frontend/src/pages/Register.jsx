@@ -75,7 +75,7 @@ const Register = () => {
             Create Your Tutor Account
           </h1>
           <p className="text-slate-500 text-sm max-w-md mx-auto">
-            Join Home Tutor BD to start applying for verified home tuition opportunities across Bangladesh.
+            Join English Medium Tutor to start applying for verified home tuition opportunities across Bangladesh.
           </p>
         </div>
 

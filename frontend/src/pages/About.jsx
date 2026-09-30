@@ -9,10 +9,10 @@ const About = () => {
           <FaGraduationCap />
         </div>
         <h1 className="text-3xl sm:text-4xl font-extrabold text-navy-900">
-          About Home Tutor BD
+          About English Medium Tutor
         </h1>
         <p className="text-slate-600 text-base leading-relaxed">
-          Home Tutor BD is Bangladesh&apos;s premier dedicated platform connecting ambitious students and guardians with verified home tutors from BUET, DU, DMC, NSU, BRACU, and leading educational institutions.
+          English Medium Tutor is Bangladesh&apos;s premier dedicated platform connecting ambitious students and guardians with verified home tutors from BUET, DU, DMC, NSU, BRACU, and leading educational institutions.
         </p>
       </div>
 
@@ -37,7 +37,7 @@ const About = () => {
       <div className="bg-navy-900 text-white p-8 sm:p-12 rounded-3xl space-y-6 text-center">
         <h2 className="text-2xl sm:text-3xl font-extrabold">Empowering Tutors & Students Nationwide</h2>
         <p className="text-slate-300 text-sm max-w-2xl mx-auto leading-relaxed">
-          Whether you are looking for an HSC Physics expert in Dhanmondi, a Class 9 Higher Math tutor in Uttara, or an O-Level English tutor in Gulshan, Home Tutor BD is your trusted education partner.
+          Whether you are looking for an HSC Physics expert in Dhanmondi, a Class 9 Higher Math tutor in Uttara, or an O-Level English tutor in Gulshan, English Medium Tutor is your trusted education partner.
         </p>
       </div>
     </div>

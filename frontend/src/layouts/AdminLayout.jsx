@@ -26,7 +26,7 @@ const AdminLayout = () => {
               <FaBars className="text-xl" />
             </button>
             <h1 className="text-lg font-bold text-navy-900 hidden sm:block">
-              Home Tutor BD Management Console
+              English Medium Tutor Management Console
             </h1>
           </div>
 

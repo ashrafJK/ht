@@ -89,14 +89,14 @@ const Home = () => {
   const faqs = [
     {
       q: 'How can a tutor apply for a tuition post?',
-      a: 'Tutors must register and complete their profile on Home Tutor BD. Once logged in, browse available tuitions on the /tuitions page and click "Apply Now" with an optional cover letter.',
+      a: 'Tutors must register and complete their profile on English Medium Tutor. Once logged in, browse available tuitions on the /tuitions page and click "Apply Now" with an optional cover letter.',
     },
     {
       q: 'Can guardians or students create tuition posts directly?',
-      a: 'No. To ensure maximum safety and verification, all tuition posts on Home Tutor BD are screened and created exclusively by our Admin team.',
+      a: 'No. To ensure maximum safety and verification, all tuition posts on English Medium Tutor are screened and created exclusively by our Admin team.',
     },
     {
-      q: 'Is tutor registration free on Home Tutor BD?',
+      q: 'Is tutor registration free on English Medium Tutor?',
       a: 'Yes, tutor registration and profile creation are 100% free of cost.',
     },
     {
@@ -329,7 +329,7 @@ const Home = () => {
             Simple Process
           </span>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-navy-900 mt-2">
-            How Home Tutor BD Works
+            How English Medium Tutor Works
           </h2>
         </div>
 
@@ -378,7 +378,7 @@ const Home = () => {
                 The Most Trustworthy Home Tuition Platform in Bangladesh
               </h2>
               <p className="text-slate-300 text-base leading-relaxed">
-                Home Tutor BD bridges the gap between dedicated tutors and guardians seeking academic excellence.
+                English Medium Tutor bridges the gap between dedicated tutors and guardians seeking academic excellence.
               </p>
 
               <div className="space-y-4 pt-2">
