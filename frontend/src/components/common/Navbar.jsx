@@ -43,16 +43,8 @@ const Navbar = () => {
               <FaGraduationCap className="text-2xl sm:text-3xl" />
             </div>
             <div>
-              <div className="flex items-center gap-2">
-                <span className="text-xl sm:text-2xl font-bold text-navy-900 tracking-tight">
-                  HomeTutor<span className="text-primary-600 font-extrabold">BD</span>
-                </span>
-                <span className="hidden sm:inline-block text-xs font-bold text-primary-700 bg-primary-50 px-2.5 py-0.5 rounded-full border border-primary-200 shadow-sm">
-                  English Medium Tutor
-                </span>
-              </div>
-              <span className="block sm:hidden text-[11px] font-bold text-primary-600">
-                English Medium Tutor
+              <span className="text-xl sm:text-2xl font-extrabold text-navy-900 tracking-tight">
+                English<span className="text-primary-600"> Medium Tutor</span>
               </span>
             </div>
           </Link>

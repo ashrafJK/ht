@@ -23,11 +23,11 @@ const Footer = () => {
                 <FaGraduationCap className="text-2xl" />
               </div>
               <span className="text-2xl font-bold text-white tracking-tight">
-                HomeTutor<span className="text-primary-400">BD</span>
+                English<span className="text-primary-400"> Medium Tutor</span>
               </span>
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed max-w-md">
-              Home Tutor BD is Bangladesh&apos;s leading platform for finding verified home tutors and premium tuition opportunities across Dhaka, Chattogram, Sylhet, and nationwide.
+              English Medium Tutor is Bangladesh&apos;s leading platform for finding verified home tutors and premium tuition opportunities across Dhaka, Chattogram, Sylhet, and nationwide.
             </p>
             <div className="flex items-center gap-3 pt-2">
               <a href="#" className="w-9 h-9 rounded-lg bg-slate-800 hover:bg-primary-600 text-slate-300 hover:text-white flex items-center justify-center transition-colors">
@@ -106,7 +106,7 @@ const Footer = () => {
 
         {/* Bottom copyright */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <p>© {new Date().getFullYear()} Home Tutor BD. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} English Medium Tutor. All rights reserved.</p>
           <div className="flex items-center gap-6">
             <Link to="/about" className="hover:text-slate-400">Terms & Conditions</Link>
             <Link to="/about" className="hover:text-slate-400">Privacy Policy</Link>
