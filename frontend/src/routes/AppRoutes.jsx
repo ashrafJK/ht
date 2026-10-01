@@ -7,6 +7,7 @@ import AdminLayout from '../layouts/AdminLayout';
 import Home from '../pages/Home';
 import TuitionListing from '../pages/TuitionListing';
 import TuitionDetails from '../pages/TuitionDetails';
+import TutorListing from '../pages/TutorListing';
 import About from '../pages/About';
 import Contact from '../pages/Contact';
 import Login from '../pages/Login';
@@ -35,6 +36,7 @@ const AppRoutes = () => {
         <Route path="tuitions" element={<TuitionListing />} />
         <Route path="tuitions/:id" element={<TuitionDetails />} />
         <Route path="about" element={<About />} />
+        <Route path="tutors" element={<TutorListing />} />
         <Route path="contact" element={<Contact />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
