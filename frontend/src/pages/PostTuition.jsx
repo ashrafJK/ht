@@ -23,7 +23,7 @@ const PostTuition = () => {
     guardianName: '',
     guardianPhone: '',
     guardianEmail: '',
-    className: 'Class 9-10',
+    className: 'Class 1',
     subject: '',
     location: '',
     area: '',
@@ -78,9 +78,16 @@ const PostTuition = () => {
   };
 
   const classOptions = [
-    'Class 1-5',
-    'Class 6-8',
-    'Class 9-10',
+    'Class 1',
+    'Class 2',
+    'Class 3',
+    'Class 4',
+    'Class 5',
+    'Class 6',
+    'Class 7',
+    'Class 8',
+    'Class 9',
+    'Class 10',
     'HSC / Class 11-12',
     'O-Level (IGCSE)',
     'A-Level (Edexcel/Cambridge)',
