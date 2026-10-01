@@ -13,6 +13,7 @@ import {
   FaMapMarkerAlt,
   FaMoneyBillWave,
   FaBriefcase,
+  FaCamera,
 } from 'react-icons/fa';
 
 const Register = () => {
@@ -21,6 +22,7 @@ const Register = () => {
 
   const [formData, setFormData] = useState({
     name: '',
+    photo: '',
     email: '',
     phone: '',
     password: '',
@@ -40,6 +42,22 @@ const Register = () => {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      if (file.size > 5 * 1024 * 1024) {
+        toast.error('Photo size must be less than 5MB');
+        return;
+      }
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setFormData((prev) => ({ ...prev, photo: reader.result }));
+        toast.success('Profile photo selected!');
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -85,6 +103,55 @@ const Register = () => {
             <h3 className="text-sm font-bold uppercase tracking-wider text-primary-700 border-b border-slate-100 pb-2">
               1. Account Credentials
             </h3>
+
+            {/* Profile Photo Upload Block */}
+            <div className="flex flex-col sm:flex-row items-center gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-200/80 mb-4">
+              <div className="relative group shrink-0">
+                {formData.photo ? (
+                  <img
+                    src={formData.photo}
+                    alt="Preview"
+                    className="w-20 h-20 rounded-full object-cover border-2 border-primary-500 shadow-sm"
+                  />
+                ) : (
+                  <div className="w-20 h-20 rounded-full bg-slate-200 text-slate-400 flex items-center justify-center text-3xl border-2 border-slate-300">
+                    <FaUser />
+                  </div>
+                )}
+              </div>
+
+              <div className="space-y-1.5 text-center sm:text-left flex-1 w-full">
+                <label className="block text-xs font-bold text-slate-800">Profile Photo (Optional)</label>
+                <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+                  <label className="cursor-pointer inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-primary-600 hover:bg-primary-700 text-white text-xs font-bold shadow-sm transition-all active:scale-95">
+                    <FaCamera /> Choose Image File
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleImageUpload}
+                      className="hidden"
+                    />
+                  </label>
+                  {formData.photo && (
+                    <button
+                      type="button"
+                      onClick={() => setFormData({ ...formData, photo: '' })}
+                      className="px-2.5 py-1.5 rounded-xl bg-slate-200 hover:bg-rose-100 text-slate-600 hover:text-rose-600 text-xs font-semibold transition-colors"
+                    >
+                      Remove
+                    </button>
+                  )}
+                </div>
+                <input
+                  type="text"
+                  name="photo"
+                  placeholder="Or paste image URL (https://...)"
+                  value={formData.photo}
+                  onChange={handleChange}
+                  className="w-full px-3 py-1.5 rounded-lg border border-slate-200 text-xs focus:outline-none focus:ring-1 focus:ring-primary-500 bg-white"
+                />
+              </div>
+            </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>

@@ -78,6 +78,22 @@ const TutorProfile = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      if (file.size > 5 * 1024 * 1024) {
+        toast.error('Photo size must be less than 5MB');
+        return;
+      }
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setFormData((prev) => ({ ...prev, photo: reader.result }));
+        toast.success('Photo updated! Click Save Profile Changes to save.');
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -109,8 +125,17 @@ const TutorProfile = () => {
                 <FaUser />
               </div>
             )}
+            <label className="absolute bottom-0 right-0 bg-primary-600 hover:bg-primary-700 text-white p-2 rounded-full text-xs shadow-md cursor-pointer transition-transform hover:scale-110" title="Upload New Profile Photo">
+              <FaCamera />
+              <input
+                type="file"
+                accept="image/*"
+                onChange={handleImageUpload}
+                className="hidden"
+              />
+            </label>
             {tutorProfile?.verified && (
-              <span className="absolute bottom-1 right-1 bg-emerald-500 text-white p-1.5 rounded-full text-xs shadow" title="Verified Tutor">
+              <span className="absolute top-0 right-0 bg-emerald-500 text-white p-1.5 rounded-full text-xs shadow" title="Verified Tutor">
                 <FaCheckCircle />
               </span>
             )}
