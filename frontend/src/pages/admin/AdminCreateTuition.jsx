@@ -30,6 +30,41 @@ const AdminCreateTuition = () => {
 
   const [submitting, setSubmitting] = useState(false);
 
+  const classOptions = [
+    'Play',
+    'Pre-Schooling',
+    'Nursery',
+    'KG',
+    'KG 1',
+    'KG 2',
+    'Standard 1',
+    'Standard 2',
+    'Standard 3',
+    'Standard 4',
+    'Standard 5',
+    'Standard 6',
+    'Standard 7',
+    'Standard 8',
+    'Standard 9',
+    'Standard 10',
+    'Class 1',
+    'Class 2',
+    'Class 3',
+    'Class 4',
+    'Class 5',
+    'Class 6',
+    'Class 7',
+    'Class 8',
+    'Class 9',
+    'Class 10',
+    'O Level',
+    'A Level (AS)',
+    'A Level (A2)',
+    'HSC / Class 11-12',
+    'Admission Test',
+    'IELTS / English Spoken',
+  ];
+
   const handleChange = (e) => {
     const value = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
     setFormData({ ...formData, [e.target.name]: value });
@@ -86,15 +121,20 @@ const AdminCreateTuition = () => {
 
             <div>
               <label className="block text-xs font-bold text-slate-700 mb-1">Class / Grade *</label>
-              <input
-                type="text"
+              <select
                 name="className"
                 required
-                placeholder="e.g. HSC, Class 9-10, O-Level"
                 value={formData.className}
                 onChange={handleChange}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500"
-              />
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white"
+              >
+                <option value="">Select Class / Grade</option>
+                {classOptions.map((cls) => (
+                  <option key={cls} value={cls}>
+                    {cls}
+                  </option>
+                ))}
+              </select>
             </div>
 
             <div>
