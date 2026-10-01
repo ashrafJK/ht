@@ -192,7 +192,7 @@ export const createTuition = asyncHandler(async (req, res) => {
         area: area || '',
         daysPerWeek: daysPerWeek || '3 Days/Week',
         preferredTime: preferredTime || '7:00 PM',
-        salary: Number(salary),
+        salary: isNaN(Number(salary)) ? salary : Number(salary),
         tutorGenderPreference: tutorGenderPreference || 'Any',
         tuitionType: tuitionType || 'Home Tuition',
         description: description || '',
@@ -229,7 +229,7 @@ export const updateTuition = asyncHandler(async (req, res) => {
     tuition.area = req.body.area ?? tuition.area;
     tuition.daysPerWeek = req.body.daysPerWeek || tuition.daysPerWeek;
     tuition.preferredTime = req.body.preferredTime || tuition.preferredTime;
-    tuition.salary = req.body.salary !== undefined ? Number(req.body.salary) : tuition.salary;
+    tuition.salary = req.body.salary !== undefined ? (isNaN(Number(req.body.salary)) ? req.body.salary : Number(req.body.salary)) : tuition.salary;
     tuition.tutorGenderPreference = req.body.tutorGenderPreference || tuition.tutorGenderPreference;
     tuition.tuitionType = req.body.tuitionType || tuition.tuitionType;
     tuition.description = req.body.description ?? tuition.description;

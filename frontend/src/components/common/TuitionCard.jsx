@@ -130,7 +130,9 @@ const TuitionCard = ({ tuition, onApplyClick }) => {
           <span className="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Salary</span>
           <div className="flex items-baseline gap-1">
             <span className="text-xl font-extrabold text-emerald-600">
-              ৳{Number(salary).toLocaleString('en-IN')}
+              {!isNaN(Number(salary)) && String(salary).trim() !== ''
+                ? `৳${Number(salary).toLocaleString('en-IN')}`
+                : String(salary).startsWith('৳') ? salary : `৳${salary}`}
             </span>
             <span className="text-xs text-slate-500 font-medium">/month</span>
           </div>

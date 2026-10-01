@@ -169,7 +169,7 @@ const AdminEditTuition = () => {
             <div>
               <label className="block text-xs font-bold text-slate-700 mb-1">Salary (৳/month) *</label>
               <input
-                type="number"
+                type="text"
                 name="salary"
                 required
                 value={formData.salary}

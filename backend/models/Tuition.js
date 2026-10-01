@@ -53,7 +53,7 @@ const tuitionSchema = new mongoose.Schema(
       default: '7:00 PM',
     },
     salary: {
-      type: Number,
+      type: mongoose.Schema.Types.Mixed,
       required: [true, 'Salary is required'],
     },
     tutorGenderPreference: {

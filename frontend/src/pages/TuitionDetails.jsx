@@ -127,7 +127,9 @@ const TuitionDetails = () => {
           <div>
             <span className="text-xs font-bold uppercase tracking-wider text-slate-400">Offered Monthly Salary</span>
             <div className="text-3xl font-extrabold text-emerald-600">
-              ৳{Number(tuition.salary).toLocaleString('en-IN')}{' '}
+              {!isNaN(Number(tuition.salary)) && String(tuition.salary).trim() !== ''
+                ? `৳${Number(tuition.salary).toLocaleString('en-IN')}`
+                : String(tuition.salary).startsWith('৳') ? tuition.salary : `৳${tuition.salary}`}{' '}
               <span className="text-xs font-medium text-slate-500">/ month</span>
             </div>
           </div>
