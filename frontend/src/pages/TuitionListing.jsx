@@ -86,7 +86,39 @@ const TuitionListing = () => {
     setSearchParams({});
   };
 
-  const classesList = ['Class 1', 'Class 2', 'Class 3', 'Class 4', 'Class 5', 'Class 6', 'Class 7', 'Class 8', 'Class 9', 'Class 10', 'HSC', 'O-Level', 'A-Level', 'Admission Test'];
+  const classesList = [
+    'Play',
+    'Pre-Schooling',
+    'Nursery',
+    'KG',
+    'KG 1',
+    'KG 2',
+    'Standard 1',
+    'Standard 2',
+    'Standard 3',
+    'Standard 4',
+    'Standard 5',
+    'Standard 6',
+    'Standard 7',
+    'Standard 8',
+    'Standard 9',
+    'Standard 10',
+    'Class 1',
+    'Class 2',
+    'Class 3',
+    'Class 4',
+    'Class 5',
+    'Class 6',
+    'Class 7',
+    'Class 8',
+    'Class 9',
+    'Class 10',
+    'O Level',
+    'A Level (AS)',
+    'A Level (A2)',
+    'HSC',
+    'Admission Test',
+  ];
   const subjectsList = ['Mathematics', 'Physics', 'Chemistry', 'English', 'Biology', 'ICT', 'Bangla', 'Accounting', 'General Science'];
   const locationsList = ['Dhanmondi', 'Mirpur', 'Uttara', 'Mohammadpur', 'Banasree', 'Bashundhara', 'Khilgaon', 'Rampura', 'Motijheel', 'Gulshan', 'Online'];
 
