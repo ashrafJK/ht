@@ -2,18 +2,21 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import API from '../../services/api';
 import toast from 'react-hot-toast';
-import { FaBookOpen, FaPlusCircle, FaArrowLeft } from 'react-icons/fa';
+import { bangladeshDivisions } from '../../data/locationData';
 
 const AdminCreateTuition = () => {
   const navigate = useNavigate();
 
+  const [selectedDivision, setSelectedDivision] = useState('Dhaka');
+  const [selectedDistrict, setSelectedDistrict] = useState('Dhaka');
+
   const [formData, setFormData] = useState({
     title: '',
-    className: 'HSC',
+    className: 'Class 1',
     subject: 'Physics',
     studentGender: 'Male',
     numberOfStudents: 1,
-    location: 'Dhanmondi',
+    location: 'Dhaka',
     area: '',
     daysPerWeek: '3 Days/Week',
     preferredTime: '7:00 PM',
@@ -29,6 +32,24 @@ const AdminCreateTuition = () => {
   });
 
   const [submitting, setSubmitting] = useState(false);
+
+  const currentDistricts =
+    bangladeshDivisions.find((d) => d.division === selectedDivision)?.districts || [];
+
+  const handleDivisionChange = (e) => {
+    const divName = e.target.value;
+    setSelectedDivision(divName);
+    const divObj = bangladeshDivisions.find((d) => d.division === divName);
+    const defaultDist = divObj && divObj.districts.length > 0 ? divObj.districts[0] : '';
+    setSelectedDistrict(defaultDist);
+    setFormData((prev) => ({ ...prev, location: defaultDist }));
+  };
+
+  const handleDistrictChange = (e) => {
+    const distName = e.target.value;
+    setSelectedDistrict(distName);
+    setFormData((prev) => ({ ...prev, location: distName }));
+  };
 
   const classOptions = [
     'Play',
@@ -151,24 +172,41 @@ const AdminCreateTuition = () => {
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-slate-700 mb-1">Location *</label>
-              <input
-                type="text"
-                name="location"
-                required
-                placeholder="e.g. Dhanmondi, Mirpur, Uttara"
-                value={formData.location}
-                onChange={handleChange}
-                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500"
-              />
+              <label className="block text-xs font-bold text-slate-700 mb-1">Division (বিভাগ) *</label>
+              <select
+                value={selectedDivision}
+                onChange={handleDivisionChange}
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white"
+              >
+                {bangladeshDivisions.map((d) => (
+                  <option key={d.division} value={d.division}>
+                    {d.division} ({d.bnName})
+                  </option>
+                ))}
+              </select>
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-slate-700 mb-1">Detailed Area</label>
+              <label className="block text-xs font-bold text-slate-700 mb-1">District (জেলা) *</label>
+              <select
+                value={selectedDistrict}
+                onChange={handleDistrictChange}
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white"
+              >
+                {currentDistricts.map((dist) => (
+                  <option key={dist} value={dist}>
+                    {dist}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="sm:col-span-2">
+              <label className="block text-xs font-bold text-slate-700 mb-1">Detailed Area / Thana (বিস্তারিত এলাকা/থানা/রোড)</label>
               <input
                 type="text"
                 name="area"
-                placeholder="e.g. Road 27, Dhanmondi"
+                placeholder="e.g. Dhanmondi Road 27, Uttara Sector 4, Zindabazar..."
                 value={formData.area}
                 onChange={handleChange}
                 className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500"
