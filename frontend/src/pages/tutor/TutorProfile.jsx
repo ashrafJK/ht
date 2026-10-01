@@ -16,6 +16,7 @@ import {
   FaCamera,
   FaShieldAlt,
 } from 'react-icons/fa';
+import { compressImageFile } from '../../utils/imageCompressor';
 
 const TutorProfile = () => {
   const { tutorProfile, updateTutorProfileState } = useAuth();
@@ -78,19 +79,16 @@ const TutorProfile = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleImageUpload = (e) => {
+  const handleImageUpload = async (e) => {
     const file = e.target.files[0];
     if (file) {
-      if (file.size > 5 * 1024 * 1024) {
-        toast.error('Photo size must be less than 5MB');
-        return;
+      try {
+        const compressed = await compressImageFile(file);
+        setFormData((prev) => ({ ...prev, photo: compressed }));
+        toast.success('Photo optimized! Click Save Profile Changes to save.');
+      } catch (err) {
+        toast.error(err.message || 'Error processing photo');
       }
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setFormData((prev) => ({ ...prev, photo: reader.result }));
-        toast.success('Photo updated! Click Save Profile Changes to save.');
-      };
-      reader.readAsDataURL(file);
     }
   };
 
