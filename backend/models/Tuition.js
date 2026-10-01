@@ -74,6 +74,23 @@ const tuitionSchema = new mongoose.Schema(
       type: String,
       default: '',
     },
+    guardianName: {
+      type: String,
+      default: '',
+    },
+    guardianPhone: {
+      type: String,
+      default: '',
+    },
+    guardianEmail: {
+      type: String,
+      default: '',
+    },
+    postedBy: {
+      type: String,
+      enum: ['guardian', 'admin'],
+      default: 'guardian',
+    },
     applicationDeadline: {
       type: Date,
     },

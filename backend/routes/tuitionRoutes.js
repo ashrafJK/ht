@@ -3,6 +3,7 @@ import {
   getTuitions,
   getTuitionById,
   createTuition,
+  postTuitionRequest,
   updateTuition,
   deleteTuition,
   updateTuitionStatus,
@@ -11,6 +12,8 @@ import {
 import { protect, adminOnly } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
+
+router.post('/request', postTuitionRequest);
 
 router
   .route('/')

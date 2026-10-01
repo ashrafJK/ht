@@ -92,8 +92,8 @@ const Home = () => {
       a: 'Tutors must register and complete their profile on English Medium Tutor. Once logged in, browse available tuitions on the /tuitions page and click "Apply Now" with an optional cover letter.',
     },
     {
-      q: 'Can guardians or students create tuition posts directly?',
-      a: 'No. To ensure maximum safety and verification, all tuition posts on English Medium Tutor are screened and created exclusively by our Admin team.',
+      q: 'How can guardians or students request a tutor / post a tuition requirement?',
+      a: 'Guardians and students can post their tuition requirements for free by clicking "Request Tutor" in the top menu. Specify your student\'s class (Class 1-10, O/A Level, HSC), subjects, location, and budget, and our verified tutors will reach out to you directly!',
     },
     {
       q: 'Is tutor registration free on English Medium Tutor?',
@@ -145,10 +145,16 @@ const Home = () => {
             className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <Link
+              to="/post-tuition"
+              className="w-full sm:w-auto px-8 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-base shadow-lg shadow-emerald-500/30 hover:shadow-xl transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2"
+            >
+              <FaChalkboardTeacher /> Request a Tutor (পোস্ট দিন)
+            </Link>
+            <Link
               to="/tuitions"
               className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white font-bold text-base shadow-lg shadow-primary-500/30 hover:shadow-xl transition-all transform hover:-translate-y-0.5"
             >
-              Find Tuition Opportunities
+              Browse Tuitions
             </Link>
             <Link
               to="/register"

@@ -213,6 +213,68 @@ export const createTuition = asyncHandler(async (req, res) => {
   res.status(201).json(tuition);
 });
 
+// @desc    Public user / Guardian post tuition request
+// @route   POST /api/tuitions/request
+// @access  Public
+export const postTuitionRequest = asyncHandler(async (req, res) => {
+  const {
+    title,
+    className,
+    subject,
+    studentGender,
+    numberOfStudents,
+    location,
+    area,
+    daysPerWeek,
+    preferredTime,
+    salary,
+    tutorGenderPreference,
+    tuitionType,
+    description,
+    requirements,
+    guardianName,
+    guardianPhone,
+    guardianEmail,
+  } = req.body;
+
+  if (!className || !subject || !location || !salary || !guardianPhone) {
+    res.status(400);
+    throw new Error('Please fill in required fields: Class, Subject, Location, Salary, and Phone Number.');
+  }
+
+  const defaultTitle = `${className} Tutor Needed for ${subject} at ${location}`;
+  const tuitionId = await generateTuitionId();
+
+  const tuition = await Tuition.create({
+    tuitionId,
+    title: title || defaultTitle,
+    className,
+    subject,
+    studentGender: studentGender || 'Any',
+    numberOfStudents: numberOfStudents || 1,
+    location,
+    area: area || '',
+    daysPerWeek: daysPerWeek || '3 Days/Week',
+    preferredTime: preferredTime || 'Flexible',
+    salary: isNaN(Number(salary)) ? salary : Number(salary),
+    tutorGenderPreference: tutorGenderPreference || 'Any',
+    tuitionType: tuitionType || 'Home Tuition',
+    description: description || '',
+    requirements: requirements || '',
+    guardianName: guardianName || '',
+    guardianPhone: guardianPhone || '',
+    guardianEmail: guardianEmail || '',
+    postedBy: 'guardian',
+    status: 'active',
+  });
+
+  res.status(201).json({
+    success: true,
+    message: 'Tuition request posted successfully',
+    tuition,
+  });
+});
+
 // @desc    Update tuition post
 // @route   PUT /api/tuitions/:id
 // @access  Private/Admin

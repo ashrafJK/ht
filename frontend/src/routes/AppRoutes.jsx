@@ -8,6 +8,7 @@ import Home from '../pages/Home';
 import TuitionListing from '../pages/TuitionListing';
 import TuitionDetails from '../pages/TuitionDetails';
 import TutorListing from '../pages/TutorListing';
+import PostTuition from '../pages/PostTuition';
 import About from '../pages/About';
 import Contact from '../pages/Contact';
 import Login from '../pages/Login';
@@ -37,6 +38,8 @@ const AppRoutes = () => {
         <Route path="tuitions/:id" element={<TuitionDetails />} />
         <Route path="about" element={<About />} />
         <Route path="tutors" element={<TutorListing />} />
+        <Route path="post-tuition" element={<PostTuition />} />
+        <Route path="request-tutor" element={<PostTuition />} />
         <Route path="contact" element={<Contact />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
