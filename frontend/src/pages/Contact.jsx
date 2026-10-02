@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
+import API from '../services/api';
 import {
   FaPhoneAlt,
   FaEnvelope,
@@ -21,14 +22,18 @@ const Contact = () => {
 
   const [submitting, setSubmitting] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
-    setTimeout(() => {
+    try {
+      await API.post('/contact', formData);
       toast.success('Thank you! Your message has been sent to English Medium Tutor team.');
       setFormData({ name: '', email: '', phone: '', message: '' });
+    } catch (err) {
+      toast.error(err.response?.data?.message || 'Failed to send message. Please try again.');
+    } finally {
       setSubmitting(false);
-    }, 800);
+    }
   };
 
   return (

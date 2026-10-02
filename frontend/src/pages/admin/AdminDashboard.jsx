@@ -9,6 +9,7 @@ import {
   FaPlusCircle,
   FaChartBar,
   FaChartPie,
+  FaEnvelope,
 } from 'react-icons/fa';
 
 const AdminDashboard = () => {
@@ -77,7 +78,7 @@ const AdminDashboard = () => {
       </div>
 
       {/* STATS SUMMARY CARDS */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+      <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6">
         <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-soft">
           <div className="flex items-center justify-between">
             <span className="text-xs font-bold uppercase tracking-wider text-slate-500">Total Tuitions</span>
@@ -139,6 +140,24 @@ const AdminDashboard = () => {
             </div>
           </div>
         </div>
+
+        <Link
+          to="/admin/contacts"
+          className="bg-white p-5 rounded-2xl border border-slate-200 shadow-soft hover:border-primary-400 transition-all block"
+        >
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-bold uppercase tracking-wider text-slate-500">Messages</span>
+            <div className="w-10 h-10 rounded-xl bg-teal-50 text-teal-600 flex items-center justify-center text-lg">
+              <FaEnvelope />
+            </div>
+          </div>
+          <div className="mt-3">
+            <span className="text-3xl font-extrabold text-navy-900">{summary.totalContacts || 0}</span>
+            <div className="flex items-center gap-2 mt-1 text-xs">
+              <span className="text-amber-600 font-bold">{summary.unreadContacts || 0} Unread</span>
+            </div>
+          </div>
+        </Link>
       </div>
 
       {/* CHARTS GRID */}

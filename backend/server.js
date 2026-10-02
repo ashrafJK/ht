@@ -9,6 +9,7 @@ import tuitionRoutes from './routes/tuitionRoutes.js';
 import applicationRoutes from './routes/applicationRoutes.js';
 import tutorRoutes from './routes/tutorRoutes.js';
 import adminRoutes from './routes/adminRoutes.js';
+import contactRoutes from './routes/contactRoutes.js';
 
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 
@@ -73,6 +74,7 @@ app.use('/api/tuitions', tuitionRoutes);
 app.use('/api/applications', applicationRoutes);
 app.use('/api/tutors', tutorRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/api/contact', contactRoutes);
 
 // Error Handling Middlewares
 app.use(notFound);

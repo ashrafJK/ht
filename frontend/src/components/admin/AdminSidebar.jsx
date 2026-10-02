@@ -11,6 +11,7 @@ import {
   FaTimes,
   FaHome,
   FaPlusCircle,
+  FaEnvelope,
 } from 'react-icons/fa';
 import { useAuth } from '../../context/AuthContext';
 
@@ -24,6 +25,7 @@ const AdminSidebar = ({ mobileOpen, setMobileOpen }) => {
     { name: 'Create Tuition', path: '/admin/tuitions/create', icon: FaPlusCircle },
     { name: 'Applications', path: '/admin/applications', icon: FaFileSignature },
     { name: 'Tutors', path: '/admin/tutors', icon: FaUserGraduate },
+    { name: 'Contact Messages', path: '/admin/contacts', icon: FaEnvelope },
   ];
 
   const sidebarContent = (

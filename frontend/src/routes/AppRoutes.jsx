@@ -25,6 +25,7 @@ import AdminCreateTuition from '../pages/admin/AdminCreateTuition';
 import AdminEditTuition from '../pages/admin/AdminEditTuition';
 import AdminApplications from '../pages/admin/AdminApplications';
 import AdminTutors from '../pages/admin/AdminTutors';
+import AdminContacts from '../pages/admin/AdminContacts';
 
 import { ProtectedRoute, AdminRoute } from './ProtectedRoute';
 
@@ -83,6 +84,7 @@ const AppRoutes = () => {
         <Route path="tuitions/:id/edit" element={<AdminEditTuition />} />
         <Route path="applications" element={<AdminApplications />} />
         <Route path="tutors" element={<AdminTutors />} />
+        <Route path="contacts" element={<AdminContacts />} />
       </Route>
     </Routes>
   );

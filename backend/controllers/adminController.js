@@ -2,6 +2,7 @@ import asyncHandler from 'express-async-handler';
 import Tuition from '../models/Tuition.js';
 import Tutor from '../models/Tutor.js';
 import Application from '../models/Application.js';
+import Contact from '../models/Contact.js';
 
 // @desc    Get Admin Dashboard Stats & Charts data
 // @route   GET /api/admin/stats
@@ -19,6 +20,9 @@ export const getAdminStats = asyncHandler(async (req, res) => {
   const pendingApplications = await Application.countDocuments({ status: 'pending' });
   const approvedApplications = await Application.countDocuments({ status: 'approved' });
   const rejectedApplications = await Application.countDocuments({ status: 'rejected' });
+
+  const totalContacts = await Contact.countDocuments();
+  const unreadContacts = await Contact.countDocuments({ status: 'unread' });
 
   // Compute popular subjects from Tuitions
   const subjectAgg = await Tuition.aggregate([
@@ -97,6 +101,8 @@ export const getAdminStats = asyncHandler(async (req, res) => {
       pendingApplications,
       approvedApplications,
       rejectedApplications,
+      totalContacts,
+      unreadContacts,
     },
     charts: {
       popularSubjects,
