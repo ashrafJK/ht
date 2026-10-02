@@ -148,7 +148,7 @@ const Home = () => {
               to="/post-tuition"
               className="w-full sm:w-auto px-8 py-4 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold text-base shadow-lg shadow-emerald-500/30 hover:shadow-xl transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-2"
             >
-              <FaChalkboardTeacher /> Request a Tutor (পোস্ট দিন)
+              <FaChalkboardTeacher /> Request a Tutor
             </Link>
             <Link
               to="/tuitions"

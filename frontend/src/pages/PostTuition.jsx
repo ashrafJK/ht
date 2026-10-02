@@ -218,7 +218,7 @@ const PostTuition = () => {
           {/* Step 1: Guardian / Student Contact Info */}
           <div className="space-y-4">
             <h3 className="text-base font-extrabold text-navy-900 border-b border-slate-100 pb-3 flex items-center gap-2">
-              <FaUserCheck className="text-primary-600" /> 1. Contact Information (অভিভাবকের তথ্য)
+              <FaUserCheck className="text-primary-600" /> 1. Contact Information
             </h3>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -238,7 +238,7 @@ const PostTuition = () => {
 
               <div>
                 <label className="block text-xs font-bold text-slate-700 mb-1">
-                  Phone Number (সচল মোবাইল নাম্বার) *
+                  Phone Number *
                 </label>
                 <div className="relative">
                   <FaPhoneAlt className="absolute left-3.5 top-3 text-slate-400 text-xs" />
@@ -276,13 +276,13 @@ const PostTuition = () => {
           {/* Step 2: Tuition Details */}
           <div className="space-y-4">
             <h3 className="text-base font-extrabold text-navy-900 border-b border-slate-100 pb-3 flex items-center gap-2">
-              <FaBookOpen className="text-indigo-600" /> 2. Tuition Requirements (টিউশনের বিবরণ)
+              <FaBookOpen className="text-indigo-600" /> 2. Tuition Requirements
             </h3>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs font-bold text-slate-700 mb-1">
-                  Class / Grade (শ্রেণি) *
+                  Class / Grade *
                 </label>
                 <select
                   name="className"
@@ -300,7 +300,7 @@ const PostTuition = () => {
 
               <div>
                 <label className="block text-xs font-bold text-slate-700 mb-1">
-                  Subjects (পড়ানোর বিষয়) *
+                  Subjects *
                 </label>
                 <input
                   type="text"
@@ -315,7 +315,7 @@ const PostTuition = () => {
 
               <div>
                 <label className="block text-xs font-bold text-slate-700 mb-1">
-                  Division (বিভাগ) *
+                  Division *
                 </label>
                 <select
                   value={selectedDivision}
@@ -324,7 +324,7 @@ const PostTuition = () => {
                 >
                   {bangladeshDivisions.map((d) => (
                     <option key={d.division} value={d.division}>
-                      {d.division} ({d.bnName})
+                      {d.division}
                     </option>
                   ))}
                 </select>
@@ -332,7 +332,7 @@ const PostTuition = () => {
 
               <div>
                 <label className="block text-xs font-bold text-slate-700 mb-1">
-                  District (জেলা) *
+                  District *
                 </label>
                 <div className="relative">
                   <FaMapMarkerAlt className="absolute left-3.5 top-3 text-rose-500 text-xs" />
@@ -352,7 +352,7 @@ const PostTuition = () => {
 
               <div className="sm:col-span-2">
                 <label className="block text-xs font-bold text-slate-700 mb-1">
-                  Specific Area / Road / Thana (বিস্তারিত এলাকা/রোড/থানা)
+                  Specific Area / Road / Thana
                 </label>
                 <input
                   type="text"
@@ -366,7 +366,7 @@ const PostTuition = () => {
 
               <div>
                 <label className="block text-xs font-bold text-slate-700 mb-1">
-                  Monthly Budget / Salary (বেতন ৳) *
+                  Monthly Budget / Salary (৳) *
                 </label>
                 <div className="relative">
                   <FaMoneyBillWave className="absolute left-3.5 top-3 text-emerald-600 text-xs" />
@@ -384,7 +384,7 @@ const PostTuition = () => {
 
               <div>
                 <label className="block text-xs font-bold text-slate-700 mb-1">
-                  Tuition Type (টিউশনের ধরন)
+                  Tuition Type
                 </label>
                 <select
                   name="tuitionType"
@@ -402,7 +402,7 @@ const PostTuition = () => {
 
               <div>
                 <label className="block text-xs font-bold text-slate-700 mb-1">
-                  Tutor Gender Preference (শিক্ষকের জেন্ডার পছন্দ)
+                  Tutor Gender Preference
                 </label>
                 <select
                   name="tutorGenderPreference"
@@ -410,15 +410,15 @@ const PostTuition = () => {
                   onChange={handleChange}
                   className="w-full py-2.5 px-3.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 bg-white"
                 >
-                  <option value="Any">Any Gender (যে কোনো)</option>
-                  <option value="Male">Male Tutor (পুরুষ শিক্ষক)</option>
-                  <option value="Female">Female Tutor (মহিলা শিক্ষিকা)</option>
+                  <option value="Any">Any Gender</option>
+                  <option value="Male">Male Tutor</option>
+                  <option value="Female">Female Tutor</option>
                 </select>
               </div>
 
               <div>
                 <label className="block text-xs font-bold text-slate-700 mb-1">
-                  Days Per Week (সপ্তাহে কত দিন)
+                  Days Per Week
                 </label>
                 <select
                   name="daysPerWeek"
@@ -436,7 +436,7 @@ const PostTuition = () => {
 
               <div className="sm:col-span-2">
                 <label className="block text-xs font-bold text-slate-700 mb-1">
-                  Special Notes / Requirements (বিশেষ কোনো চাহিদা থাকলে লিখুন)
+                  Special Notes / Requirements
                 </label>
                 <textarea
                   rows="3"
