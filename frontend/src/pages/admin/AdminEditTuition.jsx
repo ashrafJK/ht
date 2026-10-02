@@ -207,7 +207,7 @@ const AdminEditTuition = () => {
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-slate-700 mb-1">Division (বিভাগ) *</label>
+              <label className="block text-xs font-bold text-slate-700 mb-1">Division *</label>
               <select
                 value={selectedDivision}
                 onChange={handleDivisionChange}
@@ -215,14 +215,14 @@ const AdminEditTuition = () => {
               >
                 {bangladeshDivisions.map((d) => (
                   <option key={d.division} value={d.division}>
-                    {d.division} ({d.bnName})
+                    {d.division}
                   </option>
                 ))}
               </select>
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-slate-700 mb-1">District (জেলা) *</label>
+              <label className="block text-xs font-bold text-slate-700 mb-1">District *</label>
               <select
                 value={selectedDistrict}
                 onChange={handleDistrictChange}
@@ -237,7 +237,7 @@ const AdminEditTuition = () => {
             </div>
 
             <div className="sm:col-span-2">
-              <label className="block text-xs font-bold text-slate-700 mb-1">Detailed Area / Thana (বিস্তারিত এলাকা/থানা/রোড)</label>
+              <label className="block text-xs font-bold text-slate-700 mb-1">Detailed Area / Thana / Road</label>
               <input
                 type="text"
                 name="area"
