@@ -81,12 +81,10 @@ const Login = () => {
           </button>
         </form>
 
-        <div className="text-center text-xs text-slate-500 pt-3 border-t border-slate-100 flex justify-between items-center">
+        <div className="text-center text-xs text-slate-500 pt-3 border-t border-slate-100">
+          Don't have an account?{' '}
           <Link to="/register" className="font-bold text-primary-600 hover:underline">
             Register as Tutor
-          </Link>
-          <Link to="/admin/login" className="text-slate-400 hover:text-slate-600">
-            Admin Login →
           </Link>
         </div>
       </div>
