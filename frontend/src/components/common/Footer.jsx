@@ -12,13 +12,21 @@ import {
 } from 'react-icons/fa';
 
 const Footer = () => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <footer className="bg-navy-900 text-slate-300 pt-16 pb-8 border-t border-navy-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800">
           {/* Brand Col */}
           <div className="lg:col-span-2 space-y-4">
-            <Link to="/" className="flex items-center gap-3">
+            <Link to="/" onClick={scrollToTop} className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-primary-600 to-blue-500 text-white flex items-center justify-center shadow-lg">
                 <FaGraduationCap className="text-2xl" />
               </div>
@@ -50,22 +58,22 @@ const Footer = () => {
             <h4 className="text-white font-semibold text-base mb-4 tracking-wide">Quick Links</h4>
             <ul className="space-y-2.5 text-sm">
               <li>
-                <Link to="/tuitions" className="hover:text-primary-400 transition-colors">
+                <Link to="/tuitions" onClick={scrollToTop} className="hover:text-primary-400 transition-colors">
                   Find Tuition
                 </Link>
               </li>
               <li>
-                <Link to="/register" className="hover:text-primary-400 transition-colors">
+                <Link to="/register" onClick={scrollToTop} className="hover:text-primary-400 transition-colors">
                   Become a Tutor
                 </Link>
               </li>
               <li>
-                <Link to="/about" className="hover:text-primary-400 transition-colors">
+                <Link to="/about" onClick={scrollToTop} className="hover:text-primary-400 transition-colors">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="hover:text-primary-400 transition-colors">
+                <Link to="/contact" onClick={scrollToTop} className="hover:text-primary-400 transition-colors">
                   Contact Us
                 </Link>
               </li>
@@ -108,8 +116,8 @@ const Footer = () => {
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <p>© {new Date().getFullYear()} English Medium Tutor. All rights reserved.</p>
           <div className="flex items-center gap-6">
-            <Link to="/about" className="hover:text-slate-400">Terms & Conditions</Link>
-            <Link to="/about" className="hover:text-slate-400">Privacy Policy</Link>
+            <Link to="/about" onClick={scrollToTop} className="hover:text-slate-400">Terms & Conditions</Link>
+            <Link to="/about" onClick={scrollToTop} className="hover:text-slate-400">Privacy Policy</Link>
           </div>
         </div>
       </div>
