@@ -50,7 +50,7 @@ const AdminLogin = () => {
               <input
                 type="email"
                 required
-                placeholder="admin@hometutorbd.com"
+                placeholder="Enter admin email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full pl-9 pr-3 py-2.5 rounded-xl bg-navy-950 border border-slate-700 text-white text-sm focus:outline-none focus:border-amber-500"
