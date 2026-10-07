@@ -35,15 +35,25 @@ const TuitionCard = ({ tuition, onApplyClick }) => {
     tutorGenderPreference,
   } = tuition;
 
-  // Format posted date
+  // Format posted date relative to current time
   const formatDate = (dateStr) => {
     if (!dateStr) return 'Recently';
     const date = new Date(dateStr);
-    const diffHours = Math.floor((new Date() - date) / (1000 * 60 * 60));
-    if (diffHours < 1) return 'Just now';
+    const now = new Date();
+    const diffMs = now - date;
+
+    if (isNaN(date.getTime()) || diffMs < 0) return 'Just now';
+
+    const diffMinutes = Math.floor(diffMs / (1000 * 60));
+    if (diffMinutes < 1) return 'Just now';
+    if (diffMinutes < 60) return `${diffMinutes} ${diffMinutes === 1 ? 'minute' : 'minutes'} ago`;
+
+    const diffHours = Math.floor(diffMinutes / 60);
     if (diffHours < 24) return `${diffHours} ${diffHours === 1 ? 'hour' : 'hours'} ago`;
+
     const diffDays = Math.floor(diffHours / 24);
     if (diffDays < 7) return `${diffDays} ${diffDays === 1 ? 'day' : 'days'} ago`;
+
     return date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
   };
 
@@ -115,8 +125,8 @@ const TuitionCard = ({ tuition, onApplyClick }) => {
 
         {/* Extra Specs */}
         <div className="flex items-center justify-between text-xs text-slate-500 pt-1 border-t border-slate-100">
-          <div className="flex items-center gap-1">
-            <FaClock className="text-slate-400" /> {preferredTime || 'Evening'}
+          <div className="flex items-center gap-1" title={createdAt ? new Date(createdAt).toLocaleString() : ''}>
+            <FaClock className="text-slate-400" /> {formatDate(createdAt)}
           </div>
           <div>
             Tutor Pref: <span className="font-semibold text-slate-700">{tutorGenderPreference || 'Any'}</span>

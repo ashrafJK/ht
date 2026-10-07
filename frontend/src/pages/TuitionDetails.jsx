@@ -31,6 +31,27 @@ const TuitionDetails = () => {
   const [coverMessage, setCoverMessage] = useState('');
   const [submitting, setSubmitting] = useState(false);
 
+  const formatDate = (dateStr) => {
+    if (!dateStr) return 'Recently';
+    const date = new Date(dateStr);
+    const now = new Date();
+    const diffMs = now - date;
+
+    if (isNaN(date.getTime()) || diffMs < 0) return 'Just now';
+
+    const diffMinutes = Math.floor(diffMs / (1000 * 60));
+    if (diffMinutes < 1) return 'Just now';
+    if (diffMinutes < 60) return `${diffMinutes} ${diffMinutes === 1 ? 'minute' : 'minutes'} ago`;
+
+    const diffHours = Math.floor(diffMinutes / 60);
+    if (diffHours < 24) return `${diffHours} ${diffHours === 1 ? 'hour' : 'hours'} ago`;
+
+    const diffDays = Math.floor(diffHours / 24);
+    if (diffDays < 7) return `${diffDays} ${diffDays === 1 ? 'day' : 'days'} ago`;
+
+    return date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+  };
+
   useEffect(() => {
     const fetchDetails = async () => {
       try {
@@ -108,6 +129,9 @@ const TuitionDetails = () => {
             </span>
             <span className="px-3 py-1 bg-slate-100 text-slate-700 font-mono font-bold text-xs rounded-lg">
               {tuition.tuitionId}
+            </span>
+            <span className="text-xs text-slate-500 flex items-center gap-1 font-medium ml-1">
+              <FaClock className="text-slate-400" /> Posted {formatDate(tuition.createdAt)}
             </span>
           </div>
 
@@ -198,6 +222,10 @@ const TuitionDetails = () => {
             <li className="flex justify-between py-1 border-b border-slate-50">
               <span className="text-slate-500 font-medium">Preferred Time</span>
               <span className="font-bold text-navy-900">{tuition.preferredTime}</span>
+            </li>
+            <li className="flex justify-between py-1 border-b border-slate-50">
+              <span className="text-slate-500 font-medium">Posted Time</span>
+              <span className="font-bold text-navy-900">{formatDate(tuition.createdAt)}</span>
             </li>
             <li className="flex justify-between py-1">
               <span className="text-slate-500 font-medium">Tutor Gender Preference</span>
